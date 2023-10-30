@@ -31,6 +31,9 @@ import static org.mockito.BDDMockito.then;
 
 @ExtendWith(MockitoExtension.class)
 class AdoptionServiceTest {
+    private AdoptionRequestDTO data;
+    private ApprovedAdoptionDTO approvedData;
+    private DisapprovedAdoptionDTO disapprovedData;
 
     @InjectMocks
     AdoptionService adoptionService;
@@ -46,9 +49,6 @@ class AdoptionServiceTest {
 
     @Mock
     private EmailService emailService;
-
-    @Spy
-    private List<AdoptionRequestValidator> validators = new ArrayList<>();
 
     @Mock
     private AdoptionRequestValidator validator1;
@@ -68,11 +68,8 @@ class AdoptionServiceTest {
     @Mock
     private Adoption adoption;
 
-    private AdoptionRequestDTO data;
-
-    private ApprovedAdoptionDTO approvedData;
-
-    private DisapprovedAdoptionDTO disapprovedData;
+    @Spy
+    private List<AdoptionRequestValidator> validators = new ArrayList<>();
 
     @Captor
     private ArgumentCaptor<Adoption> adoptionCaptor;
@@ -126,7 +123,7 @@ class AdoptionServiceTest {
 
     @Test
     @DisplayName("It should send e-mail when requested an adoption")
-    void sendEmailResquest() {
+    void sendEmailRequest() {
         this.data = new AdoptionRequestDTO(10l, 20l, "some motive");
 
         BDDMockito.given(petRepository.getReferenceById(data.petId())).willReturn(pet);
@@ -167,7 +164,7 @@ class AdoptionServiceTest {
     }
 
     @Test
-    @DisplayName("It should send email when approved an adoption")
+    @DisplayName("It should send e-mail when approved an adoption")
     void approveAdoptionEmail() {
         this.approvedData = new ApprovedAdoptionDTO(10l);
 
@@ -224,7 +221,7 @@ class AdoptionServiceTest {
     }
 
     @Test
-    @DisplayName("It should send email when disapproved an adoption")
+    @DisplayName("It should send e-mail when disapproved an adoption")
     void disapproveAdoptionEmail() {
         this.disapprovedData = new DisapprovedAdoptionDTO(10l, "some justification");
 
