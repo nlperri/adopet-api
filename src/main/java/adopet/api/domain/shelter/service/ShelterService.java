@@ -8,10 +8,12 @@ import adopet.api.domain.shelter.dto.ShelterDTO;
 import adopet.api.domain.shelter.dto.ShelterRegisterDTO;
 import adopet.api.domain.shelter.repository.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ShelterService {
 
     @Autowired

@@ -35,11 +35,11 @@ public class AdoptionProbabilityCalculator {
         }
 
         if (age >= 15) {
-            note -= 5;
+           return note -= 5;
         }
 
         if (age >= 10) {
-            note -= 4;
+            return note -= 4;
         }
 
         return note;

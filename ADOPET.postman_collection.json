@@ -1,0 +1,288 @@
+{
+  "info": {
+    "_postman_id": "e9941c88-b7eb-4fc7-92a6-057715a5c85f",
+    "name": "ADOPET",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "SHELTER",
+      "item": [
+        {
+          "name": "Fetch shelters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/shelters",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "shelters"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register shelter",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Abrigo xpto\",\n    \"phone\": \"61977777777\",\n    \"email\": \"abrigoxpto@email.com.br\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/shelters",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "shelters"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch pets shelter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/shelters/1/pets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "shelters",
+                "1",
+                "pets"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register shelter pet",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"type\": \"CACHORRO\",\n    \"name\": \"bidu\",\n    \"breed\": \"SRD\",\n    \"age\": 5,\n    \"color\": \"preto\",\n    \"weight\": 5.45\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/shelters/2/pets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "shelters",
+                "2",
+                "pets"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ADOPTION",
+      "item": [
+        {
+          "name": "Request adoption",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"petId\": 1,\n    \"ownerId\": 1,\n    \"motive\": \"Motivo qualquer\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/adoptions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "adoptions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Adoption approval",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"adoptionId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/adoptions/approval",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "adoptions",
+                "approval"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Adoptions disapproval",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"adoptionId\": 1,\n    \"justification\": \"Justificativa qualquer\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/adoptions/disapproval",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "adoptions",
+                "disapproval"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PET",
+      "item": [
+        {
+          "name": "Fetch available pets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pets"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "OWNER",
+      "item": [
+        {
+          "name": "Register owner",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Fulano da Silva\",\n    \"phone\": \"61900000000\",\n    \"email\": \"fulano@email.com.br\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/owners",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "owners"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update owner",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 1,\n    \"name\": \"Fulano da Silva 2\",\n    \"phone\": \"61900000001\",\n    \"email\": \"fulano2@email.com.br\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/owners",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "owners"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -24,16 +24,17 @@ public class OwnerWithAdoptionLimitValidator implements AdoptionRequestValidator
 
         Owner owner = ownerRepository.getReferenceById(data.ownerId());
 
-        for (Adoption a : adoptions) {
-            int counter = 0;
+        int counter = 0;
 
-            if(a.getOwner() == owner && a.getStatus() == StatusAdoption.APPROVED) {
+        for (Adoption a : adoptions) {
+            if (a.getOwner() == owner && a.getStatus() == StatusAdoption.APPROVED) {
                 counter += 1;
             }
-
-            if(counter == 5) {
-                throw new ValidatorException("Tutor chegou ao limite máximo de 5 adoções.");
-            }
         }
-    }
+
+        if (counter >= 5) {
+            throw new ValidatorException("Tutor chegou ao limite máximo de 5 adoções.");
+        }
+        }
+
 }

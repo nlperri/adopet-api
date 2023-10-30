@@ -12,10 +12,12 @@ import adopet.api.domain.owner.repository.OwnerRepository;
 import adopet.api.domain.pet.entity.Pet;
 import adopet.api.domain.pet.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Service
 public class AdoptionService {
 
     @Autowired
