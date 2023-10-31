@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("default")
+@Profile({"default", "test"})
 public class EmailServiceDev implements EmailService {
     public void sendEmail(String to, String subject, String message) {
         System.out.println("Enviando email fake");
