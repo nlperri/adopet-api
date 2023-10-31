@@ -53,6 +53,7 @@ public class AdoptionService {
                 shelterEmail,
                 "Solicitação de adoção",
                 "Olá" + shelterName + "!\n\nUma solicitação de adoção foi registrada hoje para o pet: " + petName + ". \nFavor avaliar para aprovação ou reprovação.");
+
     }
 
     public void approve(ApprovedAdoptionDTO data) {

@@ -4,19 +4,18 @@ import adopet.api.domain.adoption.entity.Adoption;
 import adopet.api.domain.owner.dto.OwnerRegisterDTO;
 import adopet.api.domain.owner.dto.UpdateOwnerDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "owners")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @EqualsAndHashCode(of = "id")
 public class Owner {
 
@@ -34,6 +33,7 @@ public class Owner {
     private List<Adoption> adoptions = new ArrayList<>();
 
     public Owner(OwnerRegisterDTO data) {
+        this.id = Optional.ofNullable(id).orElse(null);
         this.name = data.name();
         this.phone = data.phone();
         this.email = data.email();

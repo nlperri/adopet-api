@@ -4,16 +4,15 @@ import adopet.api.domain.adoption.StatusAdoption;
 import adopet.api.domain.owner.entity.Owner;
 import adopet.api.domain.pet.entity.Pet;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Entity
 @Table(name = "adoptions")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -39,6 +38,7 @@ public class Adoption {
     private String statusJustification;
 
     public Adoption(Owner owner, Pet pet, String motive) {
+        this.id = Optional.ofNullable(id).orElse(null);
         this.owner = owner;
         this.pet = pet;
         this.motive = motive;

@@ -5,14 +5,14 @@ import adopet.api.domain.pet.PetType;
 import adopet.api.domain.pet.dto.PetRegisterDTO;
 import adopet.api.domain.shelter.entity.Shelter;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.Optional;
 
 @Entity
 @Table(name = "pets")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -44,6 +44,7 @@ public class Pet {
     private Adoption adoption;
 
     public Pet(PetRegisterDTO data, Shelter shelter) {
+        this.id = Optional.ofNullable(id).orElse(null);
         this.type = data.type();
         this.name = data.name();
         this.breed = data.breed();
