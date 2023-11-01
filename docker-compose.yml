@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+  app-dev:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - springapimysql-net
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/adopet?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    depends_on:
+      - mysqldb
+    volumes:
+      - .m2:/root/.m2
+
+  app-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    restart: always
+    ports:
+      - 6869:8081
+    networks:
+      - springapimysql-net
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/adopet_tests?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    depends_on:
+      - mysqldb
+    volumes:
+      - .m2:/root/.m2
+
+  mysqldb:
+    image: "mysql:8.0"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=adopet
+      - MYSQL_PASSWORD=root
+    networks:
+      - springapimysql-net
+    ports:
+      - 3306:3306
+
+networks:
+  springapimysql-net:
